@@ -11,20 +11,20 @@ export class UserService {
     private userRepo: typeof User,
   ) {}
 
-  async find(): Promise<User[]> {
+  async find(): Promise<User[] | null> {
     return this.userRepo.findAll<User>({
       attributes: ['id', 'username', 'name'],
     });
   }
 
-  async findById(id: string): Promise<User> {
+  async findById(id: string): Promise<User | null> {
     return this.userRepo.findOne<User>({
       attributes: ['id', 'username', 'name'],
       where: { id },
     });
   }
 
-  async findByUsername(username: string): Promise<User> {
+  async findByUsername(username: string): Promise<User | null> {
     const attributes = this.attributes;
     attributes.push('password');
     return this.userRepo.findOne<User>({

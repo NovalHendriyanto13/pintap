@@ -1,7 +1,7 @@
 import { Sequelize } from 'sequelize-typescript';
 import { envConfig } from '../../configs/env.config';
 import { dbConfig } from './database.interface';
-import { User } from 'src/apps/users/user.model';
+import { User } from '../../apps/users/user.model';
 
 export const DatabaseService = [
   {

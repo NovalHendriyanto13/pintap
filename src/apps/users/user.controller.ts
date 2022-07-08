@@ -51,7 +51,7 @@ export class UserController {
     };
   }
 
-  @UseGuards(AuthGuard('jwt'))
+  // @UseGuards(AuthGuard('jwt'))
   @Get(':id')
   async findOne(@Param('id') id: string): Promise<any> {
     const data = await this.userService.findById(id);
@@ -69,9 +69,10 @@ export class UserController {
     };
   }
 
-  @UseGuards(AuthGuard('jwt'))
+  // @UseGuards(AuthGuard('jwt'))
   @Get()
   async findAll(): Promise<any> {
+    console.log('asdasdasdasd')
     const data = await this.userService.find();
     if (!data) {
       return {
