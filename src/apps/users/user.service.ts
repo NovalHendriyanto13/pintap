@@ -34,8 +34,13 @@ export class UserService {
   }
 
   async update(id: string, data: any) {
-    const [numberOfAffectedRows, [updatedUser]] = await this.userRepo.update({ ...data }, {
-        where: { id }, returning: true });
+    const [numberOfAffectedRows, [updatedUser]] = await this.userRepo.update(
+      { ...data },
+      {
+        where: { id },
+        returning: true,
+      },
+    );
 
     return { numberOfAffectedRows, updatedUser };
   }
@@ -45,9 +50,14 @@ export class UserService {
   }
 
   async delete(id: string) {
-    const data = { deletedat: moment().format('YYYY-MM-DD hh:mm:ss')};
-    const [numberOfAffectedRows, [updatedUser]] = await this.userRepo.update({ ...data }, {
-        where: { id }, returning: true });
+    const data = { deletedat: moment().format('YYYY-MM-DD hh:mm:ss') };
+    const [numberOfAffectedRows, [updatedUser]] = await this.userRepo.update(
+      { ...data },
+      {
+        where: { id },
+        returning: true,
+      },
+    );
 
     return { numberOfAffectedRows, updatedUser };
   }

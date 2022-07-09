@@ -12,12 +12,21 @@ import {
 import { AuthGuard } from '@nestjs/passport';
 import { UserService } from './user.service';
 
-@Controller('user')
+@Controller('aws')
 export class UserController {
   constructor(private userService: UserService) {}
 
+  @Get('initTable')
+  async initTable(): Promise<any> {
+    await this.userService.initTable();
+    return {
+      status: true,
+      data: null,
+      message: 'Init table is success',
+    };
+  }
   @UseGuards(AuthGuard('jwt'))
-  @Post()
+  @Post('user')
   async create(@Request() req): Promise<any> {
     const { password, username } = req.body;
 
